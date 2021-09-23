@@ -9,8 +9,10 @@ namespace tweetee.Application.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string UserName { get; set; }
-
+        public string Email { get; set; }
         [JsonIgnore]
-        public string Password { get; set; }
+        public byte[] PasswordHash { get; set; }
+        [JsonIgnore]
+        public byte[] PasswordSalt { get; set; }
     }
 }

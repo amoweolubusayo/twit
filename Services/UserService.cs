@@ -15,8 +15,8 @@ namespace tweetee.Services
     {
          // users hardcoded for simplicity
         private List<User> _users = new List<User> {
-            new User { Id = 1, FirstName = "Test", LastName = "User", UserName = "test", Password = "test" },
-            new User { Id = 2, FirstName = "Demo", LastName = "Demo", UserName = "demo", Password = "demo" }
+            new User { Id = 1, FirstName = "Test", LastName = "User", UserName = "test" },
+            new User { Id = 2, FirstName = "Demo", LastName = "Demo", UserName = "demo"}
         };
 
         private readonly GeneralSettings _generalSettings;
@@ -27,7 +27,7 @@ namespace tweetee.Services
 
         public UserService(){}
         public AuthResponse Authenticate (AuthRequest model) {
-            var user = _users.SingleOrDefault (x => x.UserName == model.Username && x.Password == model.Password);
+            var user = _users.SingleOrDefault (x => x.UserName == model.Username);
 
             // return null if user not found
             if (user == null) return null;

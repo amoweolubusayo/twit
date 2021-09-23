@@ -7,6 +7,7 @@ namespace tweetee.Application.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
+        public string Email { get; set; }
         public string Token { get; set; }
 
 
@@ -16,6 +17,7 @@ namespace tweetee.Application.Models
             FirstName = user.FirstName;
             LastName = user.LastName;
             Username = user.UserName;
+            Email = user.Email;
             Token = token;
         }
     }
