@@ -1,0 +1,47 @@
+<p class="h4 mb-4">
+    Sign up to join tweetee</p>
+<form (ngSubmit)="onSubmit()" class="text-center border border-dark p-5 .col-6">
+    <div class="form-row mb-4">
+        <div class="col">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" />
+        </div>
+        <div class="col">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" />
+        </div>
+    </div>
+    <div class="form-row mb-4">
+        <div class="col">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" />
+            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+              Please enter a valid email address only
+            </small>
+        </div>
+        <div class="col">
+            <label for="userName">UserName</label>
+            <input type="text" class="form-control" />
+        </div>
+    </div>
+    <div class="col">
+        <label for="password">Password</label>
+        <input type="text" class="form-control" />
+        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+          At least 8 characters and 1 digit
+        </small>
+    </div>
+    <div class="col">
+        <button [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Sign up
+      </button>
+        <a routerLink="/login" class="btn btn-link">Cancel</a>
+    </div>
+
+    <p>By clicking
+        <em>Sign up</em> you agree to our
+        <a href="" target="_blank">terms of service</a></p>
+
+
+</form>

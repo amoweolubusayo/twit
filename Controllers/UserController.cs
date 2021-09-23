@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-//using tweetee.Application.Commands;
+using tweetee.Application.Commands;
 using tweetee.Application.Models;
-//using tweetee.Application.Queries;
+using tweetee.Application.Queries;
 using tweetee.Services;
 using tweetee.Application.Entities;
 namespace tweetee.Controllers
@@ -17,27 +17,78 @@ namespace tweetee.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        private IUserService _userService;
+        private readonly IMediator _mediator;
 
-        public UserController(IUserService userService) 
+        public UserController(IMediator mediator)
         {
-            _userService = userService;
+            _mediator = mediator;
+        }
+
+        /// <summary>
+        /// Sign up user
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [Produces("application/json")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Status ? (IActionResult)Ok(result) : BadRequest(result);
+        }
+
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [Produces("application/json")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// Update Profile
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [Produces("application/json")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [HttpPost("updateprofile")]
+        [Authorize]
+        public async Task<IActionResult> UpdateProfile([FromBody] UpdateProfileCommand command)
+        {
+            var result = await _mediator.Send(command);
+            return result.Status ? (IActionResult)Ok(result) : BadRequest(result);
         }
 
 
         /// <summary>
-        /// Gets lists of all users
+        /// Find profile info by email
         /// </summary>
         /// <returns></returns>
         [Produces("application/json")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
+        [HttpGet("profileinfo")]
         [Authorize]
-        [HttpGet]
-        public IActionResult GetAllUsers()
+        public async Task<IActionResult> FindProfileByEmail(string email)
         {
-            var users = _userService.GetAll();
-            return Ok(users);
+            var query = new GetProfileInformationQuery
+            {
+                Email = email
+            };
+            var result = await _mediator.Send(query);
+            return result.Status ? (IActionResult)Ok(result) : BadRequest(result);
         }
+
     }
 }
