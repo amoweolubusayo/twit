@@ -18,14 +18,13 @@ namespace tweetee.Infrastructure.Utility.Security
     {
         private readonly RequestDelegate _next;
         private readonly GeneralSettings _generalSettings;
-        //private readonly ILogger _logger;
+ 
 
 
         public JwtMiddleware(RequestDelegate next, IOptions<GeneralSettings> generalSettings)
         {
             _next = next;
             _generalSettings = generalSettings.Value;
-            //_logger = logger;
         }
 
         public async Task Invoke(HttpContext context, IUserService userService)
@@ -60,7 +59,7 @@ namespace tweetee.Infrastructure.Utility.Security
             }
             catch
             {
-               // _logger.LogError("Validation failed");
+               
             }
         }
     }
