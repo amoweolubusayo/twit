@@ -24,9 +24,12 @@ Bin/
 obj/
 Obj/
 wwwroot/lib
+launch.json
+tasks.json
 
 # Visual Studio 2015 cache/options directory
 .vs/
+
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
@@ -231,3 +234,35 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+ClientApp/.gitignore
+ClientApp/node_modules/.bin/acorn
+ClientApp/node_modules/.bin/ansi-html
+ClientApp/node_modules/.bin/atob
+ClientApp/node_modules/.bin/autoprefixer
+ClientApp/node_modules/.bin/blocking-proxy
+ClientApp/node_modules/.bin/browserslist
+ClientApp/node_modules/.bin/build-optimizer
+ClientApp/node_modules/.bin/cssesc
+ClientApp/node_modules/.bin/errno
+ClientApp/node_modules/.bin/esparse
+ClientApp/node_modules/.bin/image-size
+ClientApp/node_modules/.bin/esvalidate
+ClientApp/node_modules/.bin/import-local-fixture
+ClientApp/node_modules/.bin/ivy-ngcc
+ClientApp/node_modules/.bin/jasmine
+ClientApp/node_modules/.bin/js-yaml
+ClientApp/node_modules/.bin/jsesc
+ClientApp/node_modules/.bin/json5
+ClientApp/node_modules/.bin/JSONStream
+ClientApp/node_modules/.bin/karma
+ClientApp/node_modules/.bin/lessc
+ClientApp/node_modules/.bin/loose-envify
+ClientApp/node_modules/.bin/miller-rabin
+ClientApp/node_modules/.bin/mime
+ClientApp/node_modules/.bin/multicast-dns
+ClientApp/node_modules/.bin/mkdirp
+ClientApp/node_modules/.bin/ng-xi18n
+ClientApp/node_modules/.bin/ng
+ClientApp/node_modules/.bin/node-sass
+ClientApp/node_modules/.bin/node-gyp
+ClientApp/node_modules/.bin/ngc

@@ -21,7 +21,7 @@ using tweetee.Infrastructure.Utility.Security;
 using tweetee.Services;
 using tweetee.Application.Entities;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-
+using tweetee.Application.Commands;
 
 namespace tweetee
 {
@@ -66,12 +66,12 @@ namespace tweetee
                 .AddApiExplorer ();
             services.AddMediatR (Assembly.GetExecutingAssembly ());
             services.AddCors ();
-            services.AddControllersWithViews();
+            services.AddControllers();
             // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
+            // services.AddSpaStaticFiles(configuration =>
+            // {
+            //     configuration.RootPath = "ClientApp/dist";
+            // });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -91,13 +91,30 @@ namespace tweetee
             app.UseRouting ();
             app.UseAuthentication ();
             app.UseAuthorization ();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+
+            // app.UseSpa(spa =>
+            // {
+            //     // To learn more about options for serving an Angular SPA from ASP.NET Core,
+            //     // see https://go.microsoft.com/fwlink/?linkid=864501
+
+            //     spa.Options.SourcePath = "ClientApp";
+
+            //     if (env.IsDevelopment())
+            //     {
+            //         spa.UseAngularCliServer(npmScript: "start");
+            //     }
+            // });
+        });
             app.UseCors (x => x
                 .AllowAnyOrigin ()
                 .AllowAnyMethod ()
                 .AllowAnyHeader ());
             app.UseMiddleware<JwtMiddleware> ();
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            //app.UseStaticFiles();
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
@@ -105,23 +122,7 @@ namespace tweetee
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
-            });
-        });
+          
     }
     }
 }

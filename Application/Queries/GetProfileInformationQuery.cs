@@ -11,17 +11,14 @@ using System.Linq;
 using FluentValidation;
 using tweetee.Infrastructure.Persistence;
 using tweetee.Infrastructure.Utility.Security;
-using Microsoft.Extensions.Logging;
 namespace tweetee.Application.Queries
 {
-    public class GetProfileInformationQuery: IRequest<GenericResponse<ProfileInformationResult>>
+    public class GetProfileInformationQuery: IRequest<GenericResponse<ProfileInformationResponse>>
     {
-        public string Email { get; set; }
-        
-        
+        public string Email { get; set; } 
     }
 
-     public class ProfileInformationResult
+     public class ProfileInformationResponse
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -35,7 +32,7 @@ namespace tweetee.Application.Queries
             RuleFor(x => x.Email).NotNull().NotEmpty();
         }
     }
-     public class GetProfileInformationQueryHandler : IRequestHandler<GetProfileInformationQuery, GenericResponse<ProfileInformationResult>>
+     public class GetProfileInformationQueryHandler : IRequestHandler<GetProfileInformationQuery, GenericResponse<ProfileInformationResponse>>
     {
         private readonly TweeteeContext _context;
         private readonly ILogger<GetProfileInformationQueryHandler> _logger;
@@ -45,15 +42,15 @@ namespace tweetee.Application.Queries
             _context = context;
             _logger = logger;
         }
-        public async Task<GenericResponse<ProfileInformationResult>> Handle(GetProfileInformationQuery request, CancellationToken cancellationToken)
+        public async Task<GenericResponse<ProfileInformationResponse>> Handle(GetProfileInformationQuery request, CancellationToken cancellationToken)
         {
             var userExists = await _context.Users.AnyAsync(x => x.Email == request.Email);
             if (!userExists)
             {
-                return new GenericResponse<ProfileInformationResult>(false, "User not found");
+                return new GenericResponse<ProfileInformationResponse>(false, "User not found");
             }
              var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
-                var profile = new ProfileInformationResult
+                var profile = new ProfileInformationResponse
                 {
                     FirstName = user.FirstName,
                     LastName = user.LastName,
@@ -62,7 +59,7 @@ namespace tweetee.Application.Queries
                 };
             
 
-            return new GenericResponse<ProfileInformationResult>(true, "profile information fetched",profile);
+            return new GenericResponse<ProfileInformationResponse>(true, "profile information fetched",profile);
 
 
         }
