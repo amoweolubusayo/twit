@@ -21,7 +21,9 @@
                 <mat-card-subtitle>Username: {{vals.postedBy}}</mat-card-subtitle>
                 <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"> -->
                 <mat-card-actions>
-                    <form (ngSubmit)="onSubmit()">
+                    <form #likeForm="ngForm" (ngSubmit)="onSubmit(likeForm)">
+                        <input type="hidden" value="{{user}}" name="userId" ngModel="{{user}}" />
+                        <input type="hidden" value="{{vals.postId}}" name="postId" ngModel="{{vals.postId}}" />
                         <button mat-button class="butn" type="submit">Like</button>
                     </form>
                 </mat-card-actions>
