@@ -1,0 +1,24 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/explore">Home</a></li>
+        <li class="breadcrumb-item"><a href="/profile">My Profile</a></li>
+        <li class="breadcrumb-item"><a href="/explore">My Posts</a></li>
+        <li class="breadcrumb-item"><a href="#">Edit Profile</a></li>
+
+    </ol>
+</nav>
+
+<mat-card class="example-card">
+    <label>FirstName:</label>
+    <input type="text" class="form-control mb-4" value="{{data.data.firstName}}" readonly>
+
+    <label>LastName:</label>
+    <input type="text" class="form-control mb-4" placeholder="E-mail" value="{{data.data.lastName}}" readonly>
+
+    <label>UserName:</label>
+    <input type="text" class="form-control mb-4" placeholder="E-mail" value="{{data.data.userName}}" readonly>
+
+    <label>Email:</label>
+    <input type="text" class="form-control mb-4" placeholder="E-mail" value="{{data.data.email}}" readonly>
+
+</mat-card>

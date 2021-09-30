@@ -1,26 +1,28 @@
 <!-- Default form login -->
-<form class="text-center border border-dark p-5 col-md-6 col-offset-md-3">
-    <div class="form-row mb-4">
-        <p class="h4 mb-4">Sign in</p>
+<form class="text-center border p-5 col-md-6 col-offset-md-3" style="left: 250px;border-color: grey;border-width: 10em; top:10em" #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
 
-        <!-- Email -->
-        <input type="email" class="form-control mb-4" placeholder="E-mail">
+    <div class="card-header" style="color: purple;"><strong>Log in</strong></div>
 
-        <!-- Password -->
-        <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+    <p></p>
+    <!-- Email -->
 
-
-        <div class="col">
-            <!-- Sign in button -->
-            <button class="btn btn-primary" block="true" type="submit">Sign in</button>
-
-            <p>Not a member?
-                <a href="">Sign up</a>
-            </p>
-        </div>
-        <!-- Register -->
+    <input type="email" class="form-control mb-4" placeholder="E-mail" ngModel="" name="email" required>
 
 
+    <!-- Password -->
+    <input type="password" class="form-control mb-4" placeholder="Password" ngModel="" name="password" required>
+
+
+    <div class="col">
+        <!-- Sign in button -->
+        <button class="btn btn-primary" block="true" type="submit" mat-raised-button color="primary">Log in</button>
+        <p> </p>
+        <p>Not a member?
+            <a href="/register" style="color:purple">Sign up</a>
+        </p>
     </div>
+    <!-- Register -->
+
+
+
 </form>
-<!-- Default form login -->
