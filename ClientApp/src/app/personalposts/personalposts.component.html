@@ -1,0 +1,32 @@
+<h3> All posts </h3>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/explore">Home</a></li>
+        <li class="breadcrumb-item"><a href="/profile">My Profile</a></li>
+        <li class="breadcrumb-item"><a href="/explore">My Posts</a></li>
+        <li class="breadcrumb-item"><a href="#">Edit Profile</a></li>
+
+    </ol>
+</nav>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let vals of data.data">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+            </mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title>{{vals.postedBy}}</mat-card-title>
+                <mat-card-subtitle>Username: {{vals.postedBy}}</mat-card-subtitle>
+                <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"> -->
+                <mat-card-actions>
+                    <button mat-button class="butn">Like</button>
+                    <button mat-button mat-button-danger class="butn">DELETE</button>
+                </mat-card-actions>
+            </mat-card-title-group>
+            <mat-card-content>
+                {{vals.content}}
+            </mat-card-content>
+        </mat-card>
+    </li>
+</ul>
