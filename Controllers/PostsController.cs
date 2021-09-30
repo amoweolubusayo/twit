@@ -149,7 +149,6 @@ namespace tweetee.Controllers
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
         [HttpGet("getAllPosts")]
-        [Authorize]
         public async Task<IActionResult> GetAllPosts()
         {
             var query = new GetAllPostsQuery

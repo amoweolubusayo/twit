@@ -48,7 +48,7 @@ namespace tweetee.Application.Commands
             }
             var postExists = await _context.Posts.AnyAsync(x => x.Id == request.PostId && x.IsDeleted == true);
 
-            if (!postExists)
+            if (postExists)
             {
                 _logger.LogError("Post doesn't exist or has been deleted.");
                 return new GenericResponse(false, "Post doesn't exist or has been deleted.");

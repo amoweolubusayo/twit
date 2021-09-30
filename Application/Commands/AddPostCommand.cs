@@ -45,7 +45,7 @@ namespace tweetee.Application.Commands
 
         public async Task<GenericResponse> Handle(AddPostCommand request, CancellationToken cancellationToken)
         {
-             var userExists = await _context.Users.AnyAsync(x => x.Email == request.Email);
+            var userExists = await _context.Users.AnyAsync(x => x.Email == request.Email);
             if (!userExists)
             {
                 _logger.LogError("User doesn't exist.");

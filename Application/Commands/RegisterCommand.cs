@@ -10,7 +10,6 @@ using System.Linq;
 using FluentValidation;
 using tweetee.Infrastructure.Persistence;
 using tweetee.Infrastructure.Utility.Security;
-
 namespace tweetee.Application.Commands
 {
     public class RegisterCommand : IRequest<GenericResponse>
