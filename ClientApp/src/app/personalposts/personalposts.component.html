@@ -20,8 +20,12 @@
                 <mat-card-subtitle>Username: {{vals.postedBy}}</mat-card-subtitle>
                 <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"> -->
                 <mat-card-actions>
-                    <button mat-button class="butn">Like</button>
-                    <button mat-button mat-button-danger class="butn">DELETE</button>
+
+                    <form #deleteForm="ngForm" (ngSubmit)="onSubmit(deleteForm)">
+                        <input type="hidden" value="{{user}}" name="userId" ngModel="{{user}}" />
+                        <input type="hidden" value="{{vals.postId}}" name="postId" ngModel="{{vals.postId}}" />
+                        <button mat-button mat-button-danger class="butn" type="submit">DELETE</button>
+                    </form>
                 </mat-card-actions>
             </mat-card-title-group>
             <mat-card-content>

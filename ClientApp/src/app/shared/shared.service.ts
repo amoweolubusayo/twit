@@ -35,12 +35,15 @@ export class SharedService {
       return this.http.get < any > (this.APIUrl + '/User/profileinfo'+ '?email=' + email,header);
     }
      updateProfile(model: UpdateProfileModel) {
-      return this.http.post (this.APIUrl + '/User/updateprofile', model);
+      return this.http.post (this.APIUrl + '/User/updateprofile', model,header);
     }
     likePost(model: LikeModel) {
       return this.http.post (this.APIUrl + '/Posts/likepost', model, header);
     }
     addPost(model: PostModel) {
       return this.http.post (this.APIUrl + '/Posts/addpost', model, header);
+    }
+    deletePost(model: LikeModel) {
+      return this.http.post (this.APIUrl + '/Posts/deletepost', model, header);
     }
 }
