@@ -11,7 +11,7 @@ using System.Linq;
 using FluentValidation;
 using tweetee.Infrastructure.Persistence;
 using tweetee.Infrastructure.Utility.Security;
-using Microsoft.Extensions.Logging;
+
 namespace tweetee.Application.Queries
 {
     public class GetProfileInformationQuery: IRequest<GenericResponse<ProfileInformationResult>>

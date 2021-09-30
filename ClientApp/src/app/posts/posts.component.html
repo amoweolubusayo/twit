@@ -1,0 +1,7 @@
+<form class="text-center p-5 col-md-6" style="left: 150px;top:7em" #postForm="ngForm" (ngSubmit)="onSubmit(postForm)">
+    <h5>Post a thought</h5>
+    <input type="hidden" value="" name="email" ngModel="{{user}}" />
+    <textarea matInput placeholder="Type something" class="form-control" maxlength="250" rows="6" cols="70" style="width:1000px;height:400px" name="content" ngModel=""></textarea>
+    <p></p>
+    <button class="btn btn-primary btn-large" block="true" type="submit" mat-raised-button color="primary" style="float:left">Post</button>
+</form>

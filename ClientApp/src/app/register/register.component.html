@@ -1,47 +1,38 @@
-<p class="h4 mb-4">
-    Sign up to join tweetee</p>
-<form (ngSubmit)="onSubmit()" class="text-center border border-dark p-5 .col-6">
-    <div class="form-row mb-4">
-        <div class="col">
-            <label for="firstName">First Name</label>
-            <input type="text" class="form-control" />
-        </div>
-        <div class="col">
-            <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" />
-        </div>
-    </div>
-    <div class="form-row mb-4">
-        <div class="col">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" />
-            <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-              Please enter a valid email address only
-            </small>
-        </div>
-        <div class="col">
-            <label for="userName">UserName</label>
-            <input type="text" class="form-control" />
-        </div>
-    </div>
-    <div class="col">
-        <label for="password">Password</label>
-        <input type="text" class="form-control" />
-        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-          At least 8 characters and 1 digit
-        </small>
-    </div>
-    <div class="col">
-        <button [disabled]="loading" class="btn btn-primary">
-          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-          Sign up
-      </button>
-        <a routerLink="/login" class="btn btn-link">Cancel</a>
-    </div>
+<form class="text-center border p-5 col-md-6 col-offset-md-3" style="left: 250px;border-color: grey;border-width: 10em; top:10em" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+    <!-- <p class="h4 mb-4"> </p> -->
+    <div class="card-header" style="color: purple;"><strong>Sign up to join tweetee</strong></div>
 
-    <p>By clicking
-        <em>Sign up</em> you agree to our
-        <a href="" target="_blank">terms of service</a></p>
+    <label for="firstName"></label>
+    <input type="text" class="form-control" name="firstName" ngModel="" placeholder="FirstName" required (ngmodel)="model.firstName" />
+
+
+    <label for="lastName"></label>
+    <input type="text" class="form-control" name="lastName" ngModel="" placeholder="LastName" required/>
+
+    <label for="email"></label>
+    <input type="email" class="form-control" name="email" ngModel="" placeholder="Email" required/>
+
+    <label for="userName"></label>
+    <input type="text" class="form-control" name="userName" ngModel="" placeholder="UserName" required/>
+
+    <label for="password"></label>
+    <input type="password" class="form-control" name="password" ngModel="" placeholder="Password" required/>
+    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+        At least 8 characters and 1 digit
+      </small>
+
+
+
+    <div class="col">
+        <button [disabled]="loading" type="submit" mat-raised-button mat-raised-button color="primary">
+       Sign up
+      </button> &nbsp;
+        <button routerLink="/login" mat-raised-button mat-raised-button color="danger">Log in</button>
+    </div>
+    <p></p>
+    <p>Already on Tweetee?
+
+        <a href="/login" target="_blank" style="color:purple">Login</a></p>
 
 
 </form>
