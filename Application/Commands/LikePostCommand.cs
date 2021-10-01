@@ -4,6 +4,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using tweetee.Application.Entities;
 using tweetee.Infrastructure.Persistence;
 using tweetee.Infrastructure.Utility.Security;
 
@@ -56,6 +57,18 @@ namespace tweetee.Application.Commands
 
             var post = await _context.Posts.FirstOrDefaultAsync(x => x.Id == request.PostId);
             post.Liked = liked;
+            var likes = await _context.PostLikes.AnyAsync(x => x.PostId == request.PostId);
+            if(!likes){
+                PostLike p = new PostLike();
+                p.NumberOfLikes += 1;
+                p.PostId = request.PostId;
+               _context.PostLikes.Add(p);
+            }
+            else{
+                var l = await _context.PostLikes.FirstOrDefaultAsync(x => x.PostId == request.PostId);
+                l.NumberOfLikes += 1;
+                 _context.PostLikes.Update(l);
+            }
             _context.Posts.Update(post);
             await _context.SaveChangesAsync();
             return new GenericResponse(true, "Post has been liked.");

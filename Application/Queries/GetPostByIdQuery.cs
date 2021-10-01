@@ -11,20 +11,15 @@ using System.Linq;
 using FluentValidation;
 using tweetee.Infrastructure.Persistence;
 using tweetee.Infrastructure.Utility.Security;
+using tweetee.Application.Models;
+
 namespace tweetee.Application.Queries
 {
     public class GetPostByIdQuery: IRequest<GenericResponse<PostResponse>>  
     {
          public int Id { get; set; }
     }
-     public class PostResponse
-    {
-        public int PostId { get; set; }
-        public string Content { get; set; }
-        public bool IsDeleted { get; set; }
-        public bool IsLiked { get; set; }
-        public string PostedBy { get; set; }
-    }
+
      public class GetPostByIdQueryValidator : AbstractValidator<GetPostByIdQuery>
     {
         public GetPostByIdQueryValidator()

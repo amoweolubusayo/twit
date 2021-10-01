@@ -10,6 +10,8 @@ using System.Linq;
 using FluentValidation;
 using tweetee.Infrastructure.Persistence;
 using tweetee.Infrastructure.Utility.Security;
+using tweetee.Application.Models;
+
 namespace tweetee.Application.Queries
 {
     public class GetPostByUserIdQuery: IRequest<GenericResponse<List<PostResponse>>> 
@@ -53,9 +55,9 @@ namespace tweetee.Application.Queries
                                              IsDeleted = post.IsDeleted,
                                              IsLiked = post.Liked,
                                              PostedBy = user.UserName
-                                           }).ToListAsync();
+                                           }).Where(p=> p.IsDeleted == false).ToListAsync();
             
-            return new GenericResponse<List<PostResponse>>(true, "profile information fetched",posts);
+            return new GenericResponse<List<PostResponse>>(true, "posts information fetched",posts);
         }
 
     }
