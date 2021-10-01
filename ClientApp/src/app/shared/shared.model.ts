@@ -42,6 +42,24 @@ constructor() {
     }
   }
 }
+export class UsersModel {
+  status: boolean;
+  message: string;
+  data: {
+   userId: Number;
+   userName : string;
+   numberOfPosts: Number;
+  }
+constructor() {
+    this.status = false;
+    this.message = "";
+    this.data = {
+      userId : 0,
+      userName : "",
+      numberOfPosts: 0,
+    }
+  }
+}
 export class RegisterSuccessModel {
   status: boolean;
   message: string
@@ -89,6 +107,22 @@ constructor() {
     this.postId = 0;
     this.userId = 0;
 }
+}
+export class LikeInfoModel {
+  status: boolean;
+  message: string;
+  data: {
+    postId: Number;
+    numberOfLikes : Number;
+  }
+constructor() {
+    this.status = false;
+    this.message = "";
+    this.data = {
+      postId : 0,
+      numberOfLikes : 0,
+    }
+  }
 }
 export class PostModel {
   email: string;

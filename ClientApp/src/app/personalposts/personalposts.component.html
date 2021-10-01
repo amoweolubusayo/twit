@@ -4,8 +4,9 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/explore">Home</a></li>
         <li class="breadcrumb-item"><a href="/profile">My Profile</a></li>
-        <li class="breadcrumb-item"><a href="/explore">My Posts</a></li>
-        <li class="breadcrumb-item"><a href="#">Edit Profile</a></li>
+        <li class="breadcrumb-item"><a href="/personalpost">My Posts</a></li>
+        <li class="breadcrumb-item"><a href="/editprofile">Edit Profile</a></li>
+        <li class="breadcrumb-item"><a href="/users">Find People</a></li>
 
     </ol>
 </nav>
@@ -30,6 +31,7 @@
             </mat-card-title-group>
             <mat-card-content>
                 {{vals.content}}
+                <span class="like">{{vals.numberOfLikes}} likes</span>
             </mat-card-content>
         </mat-card>
     </li>
