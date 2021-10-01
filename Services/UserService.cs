@@ -14,7 +14,7 @@ namespace tweetee.Services
     public class UserService : IUserService
     {
          // users hardcoded for simplicity
-        private List<User> _users = new List<User> {
+        public List<User> _users = new List<User> {
             new User { Id = 1, FirstName = "Test", LastName = "User", UserName = "test" },
             new User { Id = 2, FirstName = "Demo", LastName = "Demo", UserName = "demo"}
         };
