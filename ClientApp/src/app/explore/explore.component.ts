@@ -4,6 +4,7 @@ import { SharedService } from '../shared/shared.service';
 import { MatSliderModule } from '@angular/material/slider';
 import { ExploreModel, LikeInfoModel, LikeModel } from '../shared/shared.model';
 import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 let id = JSON.parse(localStorage.getItem('Id'));
 @NgModule ({
@@ -26,7 +27,8 @@ export class ExploreComponent{
    public likeModel: {}
   constructor(
     public service: SharedService,
-    public _snackBar: MatSnackBar,)
+    public _snackBar: MatSnackBar,
+    public router : Router)
     {
   }
   ngOnInit() {
@@ -45,6 +47,7 @@ export class ExploreComponent{
       this._snackBar.open(this.res.message,'Close', {
         duration: this.durationInSeconds * 1000,
       });
+      this.router.navigate(["/explore"],this.res.token);
   },
   error => {
     this._snackBar.open('An error occured','Close',{

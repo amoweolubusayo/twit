@@ -16,12 +16,14 @@ import { PostsComponent } from './posts/posts.component';
 import { PersonalPostsComponent } from './personalposts/personalposts.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './editprofile/editprofile.component';
+import { UsersComponent } from './users/users.component';
 import { SharedService } from './shared/shared.service';
 import { RegisterModel, ExploreModel, LoginModel, UpdateProfileModel } from './shared/shared.model';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatSidenavModule,MatCardModule, MatFormFieldModule, MatIconModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion'
 
 
 
@@ -39,7 +41,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     PostsComponent,
     PersonalPostsComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -56,7 +59,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
       { path: 'post', component: PostsComponent},
       { path: 'personalpost', component: PersonalPostsComponent},
       { path: 'profile', component: ProfileComponent},
-      { path: 'editprofile', component: EditProfileComponent}
+      { path: 'editprofile', component: EditProfileComponent},
+      { path: 'users', component: UsersComponent}
     ]),
     BrowserAnimationsModule,
     MatButtonModule,
@@ -65,7 +69,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
+
   ],
   providers: [SharedService,RegisterModel,ExploreModel,LoginModel,UpdateProfileModel],
   bootstrap: [AppComponent]

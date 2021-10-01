@@ -42,6 +42,24 @@ constructor() {
     }
   }
 }
+export class UsersModel {
+  status: boolean;
+  message: string;
+  data: {
+   userId: Number;
+   userName : string;
+   numberOfPosts: Number;
+  }
+constructor() {
+    this.status = false;
+    this.message = "";
+    this.data = {
+      userId : 0,
+      userName : "",
+      numberOfPosts: 0,
+    }
+  }
+}
 export class RegisterSuccessModel {
   status: boolean;
   message: string
