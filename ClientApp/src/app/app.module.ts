@@ -24,6 +24,7 @@ import { MatButtonModule, MatSidenavModule,MatCardModule, MatFormFieldModule, Ma
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -70,7 +71,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatInputModule,
     MatIconModule,
     MatSnackBarModule,
-    MatGridListModule
+    MatGridListModule,
+    MatExpansionModule
   ],
   providers: [SharedService,RegisterModel,ExploreModel,LoginModel,UpdateProfileModel],
   bootstrap: [AppComponent]
