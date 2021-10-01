@@ -1,0 +1,10 @@
+mat-grid-list {
+    background: lightblue;
+}
+
+.reg {
+    left: 250px;
+    border-color: grey;
+    border-width: 10em;
+    top: 20em
+}

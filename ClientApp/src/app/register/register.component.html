@@ -1,6 +1,6 @@
-<form class="text-center border p-5 col-md-6 col-offset-md-3" style="left: 250px;border-color: grey;border-width: 10em; top:10em" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+<form class="text-center border p-5 col-md-6 col-offset-md-3 reg" #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
     <!-- <p class="h4 mb-4"> </p> -->
-    <div class="card-header" style="color: purple;"><strong>Sign up to join tweetee</strong></div>
+    <div class="card-header"><strong>Sign up to join tweetee</strong></div>
 
     <label for="firstName"></label>
     <input type="text" class="form-control" name="firstName" ngModel="" placeholder="FirstName" required (ngmodel)="model.firstName" />

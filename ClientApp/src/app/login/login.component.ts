@@ -8,7 +8,8 @@ import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-login-component',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
   public res
