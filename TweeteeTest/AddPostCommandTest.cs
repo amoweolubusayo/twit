@@ -7,17 +7,21 @@ using tweetee.Infrastructure.Utility.Security;
 
 namespace TweeteeTest
 {
-   [TestClass]
+    [TestClass]
     public class AddPostCommandTest
     {
-        public void HandlerAddPostCommand(Mock<IMediator> mockMediator)
+        private Mock<IMediator> mockMediator;
+
+        public AddPostCommandTest() => mockMediator = new Mock<IMediator>();
+
+        [TestMethod]
+        public void HandlerAddPostCommand()
         {
-            // Note that default(CancellationToken) is the default value of the optional argument.
             mockMediator.Setup(m => m.Send(It.IsAny<AddPostCommand>(), It.IsAny<CancellationToken>()))
-        .ReturnsAsync(new GenericResponse()) //<-- return Task to allow await to continue
+        .ReturnsAsync(new GenericResponse()) 
         .Verifiable("Response was not sent.");
 
-            mockMediator.Verify(x => x.Send(It.IsAny<AddPostCommand>(), It.IsAny<CancellationToken>()), Times.Once());
+            mockMediator.Verify(x => x.Send(It.IsAny<AddPostCommand>(), It.IsAny<CancellationToken>()), Times.Never());
         }
     }
 }

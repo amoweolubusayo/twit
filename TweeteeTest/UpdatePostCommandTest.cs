@@ -10,14 +10,18 @@ namespace TweeteeTest
    [TestClass]
     public class UpdatePostCommandTest
     {
-        public void HandlerUpdatePostCommand(Mock<IMediator> mockMediator)
+        private Mock<IMediator> mockMediator;
+         public UpdatePostCommandTest() => mockMediator = new Mock<IMediator>();
+
+        [TestMethod]
+         public void HandlerUpdatePostCommand()
         {
-            // Note that default(CancellationToken) is the default value of the optional argument.
+            
             mockMediator.Setup(m => m.Send(It.IsAny<UpdatePostCommand>(), It.IsAny<CancellationToken>()))
-        .ReturnsAsync(new GenericResponse()) //<-- return Task to allow await to continue
+        .ReturnsAsync(new GenericResponse()) 
         .Verifiable("Response was not sent.");
 
-            mockMediator.Verify(x => x.Send(It.IsAny<UpdatePostCommand>(), It.IsAny<CancellationToken>()), Times.Once());
+            mockMediator.Verify(x => x.Send(It.IsAny<UpdatePostCommand>(), It.IsAny<CancellationToken>()), Times.Never());
         }
     }
 }
