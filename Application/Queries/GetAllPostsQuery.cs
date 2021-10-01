@@ -34,6 +34,7 @@ namespace tweetee.Application.Queries
                 Content = p.Content,
                 IsDeleted = p.IsDeleted,
                 IsLiked = p.Liked,
+                NumberOfLikes = _context.PostLikes.First(l => l.PostId == p.Id).NumberOfLikes,
                 PostedBy = _context.Users.First(u => u.Id == p.UserId).UserName
         }).Where(p=> p.IsDeleted == false).ToListAsync();
             
