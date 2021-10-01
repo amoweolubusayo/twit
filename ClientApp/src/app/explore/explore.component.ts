@@ -2,7 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import {  NgForm } from '@angular/forms';
 import { SharedService } from '../shared/shared.service';
 import { MatSliderModule } from '@angular/material/slider';
-import { ExploreModel, LikeModel } from '../shared/shared.model';
+import { ExploreModel, LikeInfoModel, LikeModel } from '../shared/shared.model';
 import { MatSnackBar } from '@angular/material';
 
 let id = JSON.parse(localStorage.getItem('Id'));
@@ -19,6 +19,7 @@ let id = JSON.parse(localStorage.getItem('Id'));
 })
 export class ExploreComponent{
    public data = [];
+   public resp = [];
    public res
    public user
    durationInSeconds = 10

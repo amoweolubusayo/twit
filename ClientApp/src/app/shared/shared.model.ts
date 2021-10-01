@@ -90,6 +90,22 @@ constructor() {
     this.userId = 0;
 }
 }
+export class LikeInfoModel {
+  status: boolean;
+  message: string;
+  data: {
+    postId: Number;
+    numberOfLikes : Number;
+  }
+constructor() {
+    this.status = false;
+    this.message = "";
+    this.data = {
+      postId : 0,
+      numberOfLikes : 0,
+    }
+  }
+}
 export class PostModel {
   email: string;
   content: string;

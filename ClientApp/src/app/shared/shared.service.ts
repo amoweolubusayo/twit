@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders,HttpHandler, HttpEvent, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {RegisterModel, UpdateProfileModel, ExploreModel, LikeModel, LoginModel, PostModel} from '../shared/shared.model'
+import {RegisterModel, UpdateProfileModel, ExploreModel, LikeModel, LoginModel, PostModel, LikeInfoModel} from '../shared/shared.model'
 
 
 let token = JSON.parse(localStorage.getItem('TokenInfo'));
@@ -31,6 +31,9 @@ export class SharedService {
      getPostsByUser(id): Observable < ExploreModel[] > {
       return this.http.get < ExploreModel[] > (this.APIUrl + '/Posts/getpostByUserId'+'?userId=' + id,header);
     }
+    getNumberOfLikes(postId): Observable < LikeInfoModel[] > {
+      return this.http.get < LikeInfoModel[] > (this.APIUrl + '/Posts/getLikesPerPost'+'?postId=' + postId,header);
+    }
      getProfileInfo(email: string): Observable < any > {
       return this.http.get < any > (this.APIUrl + '/User/profileinfo'+ '?email=' + email,header);
     }
@@ -46,4 +49,5 @@ export class SharedService {
     deletePost(model: LikeModel) {
       return this.http.post (this.APIUrl + '/Posts/deletepost', model, header);
     }
+
 }
