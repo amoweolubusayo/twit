@@ -8,6 +8,8 @@ namespace tweetee.Infrastructure.Persistence
         }
          public DbSet<User> Users { get; set; }
          public DbSet<Post> Posts { get; set; }
+         public DbSet<Follow> Follows { get; set; }
+         public DbSet<PostLike> PostLikes { get; set; }
 
 }
 }

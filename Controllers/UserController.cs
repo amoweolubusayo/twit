@@ -90,5 +90,22 @@ namespace tweetee.Controllers
             return result.Status ? (IActionResult)Ok(result) : BadRequest(result);
         }
 
+       /// Get users
+        /// </summary>
+        /// <returns></returns>
+        [Produces("application/json")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [HttpGet("getAll")]
+        public async Task<IActionResult> GetUsers()
+        {
+            var query = new GetUsersQuery
+            {
+                
+            };
+            var result = await _mediator.Send(query);
+            return result.Status ? (IActionResult)Ok(result) : BadRequest(result);
+        }
+
     }
 }
