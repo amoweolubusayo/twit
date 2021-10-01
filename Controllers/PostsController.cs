@@ -158,5 +158,40 @@ namespace tweetee.Controllers
             var result = await _mediator.Send(query);
             return result.Status ? (IActionResult)Ok(result) : BadRequest(result);
         }
+
+         /// Get likes
+        /// </summary>
+        /// <returns></returns>
+        [Produces("application/json")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [HttpGet("getLikes")]
+        public async Task<IActionResult> GetLikes()
+        {
+            var query = new GetLikesQuery
+            {
+                
+            };
+            var result = await _mediator.Send(query);
+            return result.Status ? (IActionResult)Ok(result) : BadRequest(result);
+        }
+
+        /// Get likes per post
+        /// </summary>
+        /// <returns></returns>
+        [Produces("application/json")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        [HttpGet("getLikesPerPost")]
+        [Authorize]
+        public async Task<IActionResult> GetLikesByPost(int postId)
+        {
+            var query = new GetLikesByPostIdQuery
+            {
+                PostId = postId
+            };
+            var result = await _mediator.Send(query);
+            return result.Status ? (IActionResult)Ok(result) : BadRequest(result);
+        }
     }
 }

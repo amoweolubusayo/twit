@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using tweetee.Application.Models;
 using tweetee.Infrastructure.Persistence;
 using tweetee.Infrastructure.Utility.Security;
 
@@ -33,8 +34,9 @@ namespace tweetee.Application.Queries
                 Content = p.Content,
                 IsDeleted = p.IsDeleted,
                 IsLiked = p.Liked,
+                NumberOfLikes = _context.PostLikes.First(l => l.PostId == p.Id).NumberOfLikes,
                 PostedBy = _context.Users.First(u => u.Id == p.UserId).UserName
-        }).ToListAsync();
+        }).Where(p=> p.IsDeleted == false).ToListAsync();
             
             return new GenericResponse<List<PostResponse>>(true, "post information fetched",posts);
         }

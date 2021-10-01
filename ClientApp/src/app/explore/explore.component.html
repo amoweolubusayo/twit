@@ -5,7 +5,8 @@
         <li class="breadcrumb-item"><a href="/explore">Home</a></li>
         <li class="breadcrumb-item"><a href="/profile">My Profile</a></li>
         <li class="breadcrumb-item"><a href="/personalpost">My Posts</a></li>
-        <li class="breadcrumb-item"><a href="#">Edit Profile</a></li>
+        <li class="breadcrumb-item"><a href="/editprofile">Edit Profile</a></li>
+        <li class="breadcrumb-item"><a href="/users">Find People</a></li>
 
     </ol>
 </nav>
@@ -17,17 +18,21 @@
                 <div mat-card-avatar class="example-header-image"></div>
             </mat-card-header>
             <mat-card-title-group>
-                <mat-card-title>{{vals.postedBy}}</mat-card-title>
+                <mat-card-title>@ {{vals.postedBy}}</mat-card-title>
                 <mat-card-subtitle>Username: {{vals.postedBy}}</mat-card-subtitle>
                 <!-- <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"> -->
                 <mat-card-actions>
-                    <form (ngSubmit)="onSubmit()">
+                    <form #likeForm="ngForm" (ngSubmit)="onSubmit(likeForm)">
+                        <input type="hidden" value="{{user}}" name="userId" ngModel="{{user}}" />
+                        <input type="hidden" value="{{vals.postId}}" name="postId" ngModel="{{vals.postId}}" />
                         <button mat-button class="butn" type="submit">Like</button>
+
                     </form>
                 </mat-card-actions>
             </mat-card-title-group>
             <mat-card-content>
                 {{vals.content}}
+                <span class="like">{{vals.numberOfLikes}} likes</span>
             </mat-card-content>
         </mat-card>
     </li>

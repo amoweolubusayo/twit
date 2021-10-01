@@ -15,8 +15,10 @@ import { ExploreComponent } from './explore/explore.component';
 import { PostsComponent } from './posts/posts.component';
 import { PersonalPostsComponent } from './personalposts/personalposts.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditProfileComponent } from './editprofile/editprofile.component';
+import { UsersComponent } from './users/users.component';
 import { SharedService } from './shared/shared.service';
-import { RegisterModel, ExploreModel, LoginModel } from './shared/shared.model';
+import { RegisterModel, ExploreModel, LoginModel, UpdateProfileModel } from './shared/shared.model';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatSidenavModule,MatCardModule, MatFormFieldModule, MatIconModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
@@ -38,7 +40,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     ExploreComponent,
     PostsComponent,
     PersonalPostsComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProfileComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -54,7 +58,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
       { path: 'explore', component: ExploreComponent },
       { path: 'post', component: PostsComponent},
       { path: 'personalpost', component: PersonalPostsComponent},
-      { path: 'profile', component: ProfileComponent}
+      { path: 'profile', component: ProfileComponent},
+      { path: 'editprofile', component: EditProfileComponent},
+      { path: 'users', component: UsersComponent}
     ]),
     BrowserAnimationsModule,
     MatButtonModule,
@@ -66,7 +72,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSnackBarModule,
     MatGridListModule
   ],
-  providers: [SharedService,RegisterModel,ExploreModel,LoginModel],
+  providers: [SharedService,RegisterModel,ExploreModel,LoginModel,UpdateProfileModel],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

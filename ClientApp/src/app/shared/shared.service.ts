@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders,HttpHandler, HttpEvent, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {RegisterModel, UpdateProfileModel, ExploreModel, LikeModel, LoginModel, PostModel} from '../shared/shared.model'
+import {RegisterModel, UpdateProfileModel, ExploreModel, LikeModel, LoginModel, PostModel, LikeInfoModel, UsersModel} from '../shared/shared.model'
 
 
 let token = JSON.parse(localStorage.getItem('TokenInfo'));
@@ -28,14 +28,20 @@ export class SharedService {
      explore(): Observable < ExploreModel[] > {
        return this.http.get < ExploreModel[] > (this.APIUrl + '/Posts/getAllPosts');
      }
+     getAllUsers(): Observable < UsersModel[] > {
+      return this.http.get < UsersModel[] > (this.APIUrl + '/User/getAll');
+    }
      getPostsByUser(id): Observable < ExploreModel[] > {
       return this.http.get < ExploreModel[] > (this.APIUrl + '/Posts/getpostByUserId'+'?userId=' + id,header);
+    }
+    getNumberOfLikes(postId): Observable < LikeInfoModel[] > {
+      return this.http.get < LikeInfoModel[] > (this.APIUrl + '/Posts/getLikesPerPost'+'?postId=' + postId,header);
     }
      getProfileInfo(email: string): Observable < any > {
       return this.http.get < any > (this.APIUrl + '/User/profileinfo'+ '?email=' + email,header);
     }
      updateProfile(model: UpdateProfileModel) {
-      return this.http.post (this.APIUrl + '/User/updateprofile', model);
+      return this.http.post (this.APIUrl + '/User/updateprofile', model,header);
     }
     likePost(model: LikeModel) {
       return this.http.post (this.APIUrl + '/Posts/likepost', model, header);
@@ -43,4 +49,8 @@ export class SharedService {
     addPost(model: PostModel) {
       return this.http.post (this.APIUrl + '/Posts/addpost', model, header);
     }
+    deletePost(model: LikeModel) {
+      return this.http.post (this.APIUrl + '/Posts/deletepost', model, header);
+    }
+
 }

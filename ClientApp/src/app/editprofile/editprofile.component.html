@@ -1,0 +1,27 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/explore">Home</a></li>
+        <li class="breadcrumb-item"><a href="/profile">My Profile</a></li>
+        <li class="breadcrumb-item"><a href="/personalpost">My Posts</a></li>
+        <li class="breadcrumb-item"><a href="/editprofile">Edit Profile</a></li>
+
+    </ol>
+</nav>
+
+<mat-card class="example-card">
+    <form #editProfileForm="ngForm" (ngSubmit)="onSubmit(editProfileForm)">
+        <label>FirstName:</label>
+        <input type="text" class="form-control mb-4" value="{{data.data.firstName}}" name="firstName" ngModel="{{data.data.firstName}}">
+
+        <label>LastName:</label>
+        <input type="text" class="form-control mb-4" value="{{data.data.lastName}}" name="lastName" ngModel="{{data.data.lastName}}">
+
+        <label>UserName:</label>
+        <input type="text" class="form-control mb-4" value="{{data.data.userName}}" name="userName" ngModel="{{data.data.userName}}">
+
+        <label>Email:</label>
+        <input type="email" class="form-control mb-4" value="{{data.data.email}}" name="email" ngModel="{{data.data.email}}">
+
+        <button class="btn btn-primary" block="true" type="submit" mat-raised-button color="primary" [disabled]="loading">Edit</button>
+    </form>
+</mat-card>

@@ -3,7 +3,8 @@
         <li class="breadcrumb-item"><a href="/explore">Home</a></li>
         <li class="breadcrumb-item"><a href="/profile">My Profile</a></li>
         <li class="breadcrumb-item"><a href="/personalpost">My Posts</a></li>
-        <li class="breadcrumb-item"><a href="#">Edit Profile</a></li>
+        <li class="breadcrumb-item"><a href="/editprofile">Edit Profile</a></li>
+        <li class="breadcrumb-item"><a href="/users">Find People</a></li>
 
     </ol>
 </nav>
@@ -13,12 +14,12 @@
     <input type="text" class="form-control mb-4" value="{{data.data.firstName}}" readonly>
 
     <label>LastName:</label>
-    <input type="text" class="form-control mb-4" placeholder="E-mail" value="{{data.data.lastName}}" readonly>
+    <input type="text" class="form-control mb-4" value="{{data.data.lastName}}" readonly>
 
     <label>UserName:</label>
-    <input type="text" class="form-control mb-4" placeholder="E-mail" value="{{data.data.userName}}" readonly>
+    <input type="text" class="form-control mb-4" value="{{data.data.userName}}" readonly>
 
     <label>Email:</label>
-    <input type="text" class="form-control mb-4" placeholder="E-mail" value="{{data.data.email}}" readonly>
+    <input type="text" class="form-control mb-4" value="{{data.data.email}}" readonly>
 
 </mat-card>

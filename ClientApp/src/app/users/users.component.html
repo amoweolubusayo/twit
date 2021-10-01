@@ -1,0 +1,18 @@
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let vals of data.data">
+        <mat-accordion class="accordion">
+
+            <mat-expansion-panel class="accordion" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="accordion">
+                        @{{vals.userName}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Click to see more
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p> Number of posts: {{vals.numberOfPosts}}</p>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </li>
+</ul>
