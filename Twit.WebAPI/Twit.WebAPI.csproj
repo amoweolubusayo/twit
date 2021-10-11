@@ -1,0 +1,13 @@
+
+<Project Sdk="Microsoft.NET.Sdk.Web">
+ <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+     <ItemGroup>
+      <ProjectReference Include="..\Twit.Core\Twit.Core.csproj" />
+       <ProjectReference Include="..\Twit.Application\Twit.Application.csproj" />
+      </ItemGroup>
+
+</Project>
+
