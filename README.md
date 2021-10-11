@@ -1,7 +1,7 @@
-# tweetee
+# twit
 ##API
 Ensure you have downloaded the dotnet sdk so as to run the api. 
-Use the command dotnet run on the tweetee folder. 
+Use the command dotnet run on the twit folder. 
 If you intend to use swagger, run your localhost on whatever port it runs e.g http//localhost:5000/swagger/index.html
 
 ##Application
