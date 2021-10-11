@@ -3,12 +3,12 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using twit.Application.Models;
-using twit.Controllers;
+using Twit.Application.Models;
+using Twit.WebAPI.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using twit.Application.Entities;
-using twit.Services;
-namespace twitTest
+using Twit.Core.Entities;
+using Twit.Core.Services;
+namespace TwitTest
 
 {
     [TestClass]

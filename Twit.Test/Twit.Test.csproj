@@ -19,6 +19,7 @@
   </ItemGroup>
 
  <ItemGroup>
-    <ProjectReference Include="../twit.csproj" />
+     <ProjectReference Include="..\Twit.WebAPI\Twit.WebAPI.csproj" />
+     <ProjectReference Include="..\Twit.Core\Twit.Core.csproj" />
    </ItemGroup>
 </Project>

@@ -2,10 +2,10 @@ using System.Threading;
 using MediatR;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using twit.Application.Commands;
-using twit.Infrastructure.Utility.Security;
+using Twit.Application.Commands;
+using Twit.Core.Utils;
 
-namespace twitTest
+namespace TwitTest
 {
    [TestClass]
     public class UpdatePostCommandTest
