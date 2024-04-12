@@ -21,8 +21,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore twit/Twit.WebAPI.csproj
+      run: dotnet restore Twit.WebAPI.csproj
     - name: Build
-      run: dotnet build twit/Twit.WebAPI.csproj --no-restore
+      run: dotnet build Twit.WebAPI.csproj --no-restore
     - name: Test
-      run: dotnet test twit/Twit.WebAPI.csproj --no-build --verbosity normal
+      run: dotnet test Twit.WebAPI.csproj --no-build --verbosity normal
