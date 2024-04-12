@@ -1,4 +1,4 @@
-name: Build, Test, and Publish
+name: Build, Test, Publish and Deploy
 
 on:
   push:
@@ -60,4 +60,8 @@ jobs:
     # Display the content of the publish directory for verification
     - name: Check Publish Output
       run: ls -R ./publish
-
+      
+# Set an output with the path to the deployment artifact
+    - name: Set deployment artifact path
+      id: set_artifact_path
+      run: echo "::set-output name=artifact_path::path/to/deployment/artifact.zip"
