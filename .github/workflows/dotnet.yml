@@ -26,24 +26,32 @@ jobs:
         dotnet restore Twit.WebAPI/Twit.WebAPI.csproj
         dotnet build Twit.WebAPI/Twit.WebAPI.csproj --no-restore --configuration Release
         dotnet publish Twit.WebAPI/Twit.WebAPI.csproj --no-build --configuration Release --output ./publish/Twit.WebAPI
+        if [ ! -f Twit.WebAPI/Twit.WebAPI.runtimeconfig.json ]; then cp .github/workflows/runtimeconfig.json Twit.WebAPI/Twit.WebAPI.runtimeconfig.json; fi
+        cp Twit.WebAPI/Twit.WebAPI.runtimeconfig.json ./publish/Twit.WebAPI/
 
     - name: Restore dependencies, build, and publish for Core project
       run: |
         dotnet restore Twit.Core/Twit.Core.csproj
         dotnet build Twit.Core/Twit.Core.csproj --no-restore --configuration Release
         dotnet publish Twit.Core/Twit.Core.csproj --no-build --configuration Release --output ./publish/Twit.Core
+        if [ ! -f Twit.Core/Twit.Core.runtimeconfig.json ]; then cp .github/workflows/runtimeconfig.json Twit.Core/Twit.Core.runtimeconfig.json; fi
+        cp Twit.Core/Twit.Core.runtimeconfig.json ./publish/Twit.Core/
 
     - name: Restore dependencies, build, and publish for Infrastructure project
       run: |
         dotnet restore Twit.Infrastructure/Twit.Infrastructure.csproj
         dotnet build Twit.Infrastructure/Twit.Infrastructure.csproj --no-restore --configuration Release
         dotnet publish Twit.Infrastructure/Twit.Infrastructure.csproj --no-build --configuration Release --output ./publish/Twit.Infrastructure
+        if [ ! -f Twit.Infrastructure/Twit.Infrastructure.runtimeconfig.json ]; then cp .github/workflows/runtimeconfig.json Twit.Infrastructure/Twit.Infrastructure.runtimeconfig.json; fi
+        cp Twit.Infrastructure/Twit.Infrastructure.runtimeconfig.json ./publish/Twit.Infrastructure/
 
     - name: Restore dependencies, build, and publish for Test project
       run: |
         dotnet restore Twit.Test/Twit.Test.csproj
         dotnet build Twit.Test/Twit.Test.csproj --no-restore --configuration Release
         dotnet publish Twit.Test/Twit.Test.csproj --no-build --configuration Release --output ./publish/Twit.Test
+        if [ ! -f Twit.Test/Twit.Test.runtimeconfig.json ]; then cp .github/workflows/runtimeconfig.json Twit.Test/Twit.Test.runtimeconfig.json; fi
+        cp Twit.Test/Twit.Test.runtimeconfig.json ./publish/Twit.Test/
 
     # Display the content of the publish directory for verification
     - name: Check Publish Output
