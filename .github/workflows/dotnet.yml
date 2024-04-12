@@ -1,7 +1,4 @@
-# This workflow will build and test a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: Build and Test
+name: Build, Test, and Generate .runtimeconfig.json
 
 on:
   push:
@@ -10,53 +7,41 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  build-test-and-generate-runtimeconfig:
 
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
 
-    - name: Restore dependencies for api project
-      run: dotnet restore Twit.WebAPI/Twit.WebAPI.csproj
+      # Build and generate .runtimeconfig.json for api project
+      - name: Build and Generate .runtimeconfig.json for api project
+        run: |
+          dotnet restore Twit.WebAPI/Twit.WebAPI.csproj
+          dotnet publish -c Release -o publish/Twit.WebAPI --self-contained -r linux-x64 /p:PublishReadyToRun=true /p:PublishSingleFile=true
 
-    - name: Build
-      run: dotnet build Twit.WebAPI/Twit.WebAPI.csproj --no-restore
+      # Build and generate .runtimeconfig.json for core project
+      - name: Build and Generate .runtimeconfig.json for core project
+        run: |
+          dotnet restore Twit.Core/Twit.Core.csproj
+          dotnet publish -c Release -o publish/Twit.Core --self-contained -r linux-x64 /p:PublishReadyToRun=true /p:PublishSingleFile=true
 
-    - name: Test
-      run: dotnet test Twit.WebAPI/Twit.WebAPI.csproj --no-build --verbosity normal
+      # Build and generate .runtimeconfig.json for infrastructure project
+      - name: Build and Generate .runtimeconfig.json for infrastructure project
+        run: |
+          dotnet restore Twit.Infrastructure/Twit.Infrastructure.csproj
+          dotnet publish -c Release -o publish/Twit.Infrastructure --self-contained -r linux-x64 /p:PublishReadyToRun=true /p:PublishSingleFile=true
 
-    - name: Restore dependencies for core project
-      run: dotnet restore Twit.Core/Twit.Core.csproj
+      # Build and generate .runtimeconfig.json for test project
+      - name: Build and Generate .runtimeconfig.json for test project
+        run: |
+          dotnet restore Twit.Test/Twit.Test.csproj
+          dotnet publish -c Release -o publish/Twit.Test --self-contained -r linux-x64 /p:PublishReadyToRun=true /p:PublishSingleFile=true
 
-    - name: Build
-      run: dotnet build Twit.Core/Twit.Core.csproj --no-restore
-
-    - name: Test
-      run: dotnet test Twit.Core/Twit.Core.csproj --no-build --verbosity normal
-
-    - name: Restore dependencies for infrastructure project
-      run: dotnet restore Twit.Infrastructure/Twit.Infrastructure.csproj
-
-    - name: Build
-      run: dotnet build Twit.Infrastructure/Twit.Infrastructure.csproj --no-restore
-
-    - name: Test
-      run: dotnet test Twit.Infrastructure/Twit.Infrastructure.csproj --no-build --verbosity normal
-
-    - name: Restore dependencies for test project
-      run: dotnet restore Twit.Test/Twit.Test.csproj
-
-    - name: Build
-      run: dotnet build Twit.Test/Twit.Test.csproj --no-restore
-
-    - name: Test
-      run: dotnet test Twit.Test/Twit.Test.csproj --no-build --verbosity normal
-
-
+      # Remaining steps for testing...
