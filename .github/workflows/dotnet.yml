@@ -23,7 +23,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    - name: Restore dependencies
+    - name: Restore dependencies for api project
       run: dotnet restore Twit.WebAPI/Twit.WebAPI.csproj
 
     - name: Build
@@ -31,3 +31,32 @@ jobs:
 
     - name: Test
       run: dotnet test Twit.WebAPI/Twit.WebAPI.csproj --no-build --verbosity normal
+
+    - name: Restore dependencies for core project
+      run: dotnet restore Twit.Core/Twit.Core.csproj
+
+    - name: Build
+      run: dotnet build Twit.Core/Twit.Core.csproj --no-restore
+
+    - name: Test
+      run: dotnet test Twit.Core/Twit.Core.csproj --no-build --verbosity normal
+
+    - name: Restore dependencies for infrastructure project
+      run: dotnet restore Twit.Infrastructure/Twit.Infrastructure.csproj
+
+    - name: Build
+      run: dotnet build Twit.Infrastructure/Twit.Infrastructure.csproj --no-restore
+
+    - name: Test
+      run: dotnet test Twit.Infrastructure/Twit.Infrastructure.csproj --no-build --verbosity normal
+
+    - name: Restore dependencies for test project
+      run: dotnet restore Twit.Test/Twit.Test.csproj
+
+    - name: Build
+      run: dotnet build Twit.Test/Twit.Test.csproj --no-restore
+
+    - name: Test
+      run: dotnet test Twit.Test/Twit.Test.csproj --no-build --verbosity normal
+
+
