@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-test-and-publish:
+  build-test-and-deploy:
 
     runs-on: ubuntu-latest
 
@@ -19,6 +19,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+
+    # Create a template .runtimeconfig.json file if it doesn't exist
+    - name: Create .runtimeconfig.json template
+      run: echo '{}' > .github/workflows/runtimeconfig.json
 
     # Restore dependencies, build, and publish for each project
     - name: Restore dependencies, build, and publish for API project
