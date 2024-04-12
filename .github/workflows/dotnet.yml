@@ -26,31 +26,26 @@ jobs:
         dotnet restore Twit.WebAPI/Twit.WebAPI.csproj
         dotnet build Twit.WebAPI/Twit.WebAPI.csproj --no-restore --configuration Release
         dotnet publish Twit.WebAPI/Twit.WebAPI.csproj --no-build --configuration Release --output ./publish/Twit.WebAPI
-        cp Twit.WebAPI/*.runtimeconfig.json ./publish/Twit.WebAPI/
 
     - name: Restore dependencies, build, and publish for Core project
       run: |
         dotnet restore Twit.Core/Twit.Core.csproj
         dotnet build Twit.Core/Twit.Core.csproj --no-restore --configuration Release
         dotnet publish Twit.Core/Twit.Core.csproj --no-build --configuration Release --output ./publish/Twit.Core
-        cp Twit.Core/*.runtimeconfig.json ./publish/Twit.Core/
 
     - name: Restore dependencies, build, and publish for Infrastructure project
       run: |
         dotnet restore Twit.Infrastructure/Twit.Infrastructure.csproj
         dotnet build Twit.Infrastructure/Twit.Infrastructure.csproj --no-restore --configuration Release
         dotnet publish Twit.Infrastructure/Twit.Infrastructure.csproj --no-build --configuration Release --output ./publish/Twit.Infrastructure
-        cp Twit.Infrastructure/*.runtimeconfig.json ./publish/Twit.Infrastructure/
 
     - name: Restore dependencies, build, and publish for Test project
       run: |
         dotnet restore Twit.Test/Twit.Test.csproj
         dotnet build Twit.Test/Twit.Test.csproj --no-restore --configuration Release
         dotnet publish Twit.Test/Twit.Test.csproj --no-build --configuration Release --output ./publish/Twit.Test
-        cp Twit.Test/*.runtimeconfig.json ./publish/Twit.Test/
 
     # Display the content of the publish directory for verification
     - name: Check Publish Output
       run: ls -R ./publish
 
-    # Add deployment steps here, such as deploying to AWS Elastic Beanstalk
