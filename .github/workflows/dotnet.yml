@@ -1,4 +1,4 @@
-name: Build, Test, and Deploy
+name: Build, Test, and Publish
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-test-and-deploy:
+  build-test-and-publish:
 
     runs-on: ubuntu-latest
 
