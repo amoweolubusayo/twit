@@ -21,4 +21,4 @@ jobs:
         environment_name: twit-env
         version_label: ${{ github.run_number }}
         region: eu-west-1
-        deployment_package: s3://elasticbeanstalk-eu-west-1-424370049144/1712953416103-twit-1.0.0.zip
+        deployment_package: s3://elasticbeanstalk-eu-west-1-424370049144/1712959703603-twit-main.zip
