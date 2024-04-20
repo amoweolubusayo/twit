@@ -27,7 +27,7 @@ jobs:
       run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }} && aws configure set region ${{ secrets.AWS_REGION }}
 
     - name: Deploy to Elastic Beanstalk
-      run: aws elasticbeanstalk create-application-version --application-name twit --version-label v2 --source-bundle GitHub={Repository="amoweolubusayo/twit",CommitId="main"} && aws elasticbeanstalk update-environment --application-name twit --environment-name twit-env --version-label v2
+      run: COMMIT_ID=$(git rev-parse --short HEAD) aws elasticbeanstalk create-application-version --application-name twit --version-label v2 --source-bundle GitHub={Repository="amoweolubusayo/twit",CommitId="$COMMIT_ID"} && aws elasticbeanstalk update-environment --application-name twit --environment-name twit-env --version-label v2
 
 
 
