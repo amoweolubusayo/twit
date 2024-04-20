@@ -17,8 +17,8 @@ jobs:
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: MyApplicationName
-        environment_name: MyApplication-Environment
+        application_name: twit
+        environment_name: twit-env
         version_label: ${{ github.run_number }}
         region: eu-west-1
         deployment_package: https://elasticbeanstalk-eu-west-1-424370049144.s3.eu-west-1.amazonaws.com/1712953416103-twit-1.0.0.zip
