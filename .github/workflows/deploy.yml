@@ -19,6 +19,13 @@ jobs:
       with:
         dotnet-version: 5.0.x
 
+    - name: Install .NET Core SDK
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y apt-transport-https
+        sudo apt-get update
+        sudo apt-get install -y dotnet-sdk-5.0
+
     # Create a template .runtimeconfig.json file if it doesn't exist
     - name: Create .runtimeconfig.json template
       run: |
