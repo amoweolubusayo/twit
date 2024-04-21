@@ -69,6 +69,12 @@ jobs:
         cd ..
         zip -g deployment-package.zip Procfile
 
+    # Upload deployment package to S3 and create application version
+    - name: Upload to S3 and Create Application Version
+      run: |
+        aws s3 cp deployment-package.zip s3://elasticbeanstalk-eu-west-1-424370049144/deployment-package.zip
+        aws elasticbeanstalk create-application-version --application-name twit --version-label v${{ github.run_number }} --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-424370049144",S3Key="deployment-package.zip" --region eu-west-1
+
     # Deploy to AWS Elastic Beanstalk
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v22
