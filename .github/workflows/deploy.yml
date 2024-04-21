@@ -67,7 +67,9 @@ jobs:
 
     # Create a ZIP file of the published artifacts
     - name: Create ZIP of published artifacts
-      run: zip -r deployment-package.zip ./publish
+      run: |
+        cd publish
+        zip -r ../deployment-package.zip .
 
     # Deploy to AWS Elastic Beanstalk
     - name: Deploy to EB
