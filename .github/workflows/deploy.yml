@@ -57,9 +57,9 @@ jobs:
     # Create a Procfile with corrected paths
     - name: Create Procfile
       run: |
-        echo 'web: dotnet ./Twit.WebAPI/publish/Twit.WebAPI.dll' > Procfile
-        echo 'core: dotnet ./Twit.Core/publish/Twit.Core.dll' >> Procfile
-        echo 'app: dotnet ./Twit.Application/publish/Twit.Application.dll' >> Procfile
+        echo 'web: dotnet Twit.WebAPI/publish/Twit.WebAPI.dll' > Procfile
+        echo 'core: dotnet Twit.Core/publish/Twit.Core.dll' >> Procfile
+        echo 'app: dotnet Twit.Application/publish/Twit.Application.dll' >> Procfile
 
     # Create a ZIP file of the published artifacts and Procfile
     - name: Create ZIP of published artifacts and Procfile
