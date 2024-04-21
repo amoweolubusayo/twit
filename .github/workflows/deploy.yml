@@ -1,4 +1,4 @@
-name: Deploy to eu-west-1
+name: Deploy eu-west-1
 
 on:
  push:
@@ -54,12 +54,12 @@ jobs:
         dotnet publish Twit.Application/Twit.Application.csproj --no-build --configuration Release --output ./publish/Twit.Application
         cp .runtimeconfig.json ./publish/Twit.Application/
 
-    # Create a Procfile
+    # Create a Procfile with corrected paths
     - name: Create Procfile
       run: |
-        echo 'web: dotnet ./publish/Twit.WebAPI/Twit.WebAPI.dll' > Procfile
-        echo 'core: dotnet ./publish/Twit.Core/Twit.Core.dll' >> Procfile
-        echo 'app: dotnet ./publish/Twit.Application/Twit.Application.dll' >> Procfile
+        echo 'web: dotnet ./Twit.WebAPI/publish/Twit.WebAPI.dll' > Procfile
+        echo 'core: dotnet ./Twit.Core/publish/Twit.Core.dll' >> Procfile
+        echo 'app: dotnet ./Twit.Application/publish/Twit.Application.dll' >> Procfile
 
     # Create a ZIP file of the published artifacts and Procfile
     - name: Create ZIP of published artifacts and Procfile
